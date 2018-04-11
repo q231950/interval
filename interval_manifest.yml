@@ -6,3 +6,4 @@ applications:
   routes:
   - route: interval.eu-de.mybluemix.net
   stack: cflinuxfs2
+  buildpack: swift_buildpack
