@@ -16,7 +16,7 @@
 
 `bx cf create-app-manifest interval`
 
-This results in _interval_manifest.yml_. I looked at the Kitura Example App's manifest and [added](465b57db983737cb4a47519e7857ab88bcbef96f) the `buildpack: swift_buildpack`. This resulted in this manifest:
+This results in _interval_manifest.yml_. I looked at the Kitura Example App's manifest and [added](https://github.com/q231950/interval/commit/465b57db983737cb4a47519e7857ab88bcbef96f) the `buildpack: swift_buildpack`. This resulted in this manifest:
 
 ```yaml
 applications:
@@ -34,7 +34,7 @@ applications:
 
 **Swift Packages**
 
-[Create](d1abff1330e7a8c6edf0730d5ab13bfc09659042) _Package.swift_ which will have one target, the Kitura app. There is one product, _interval_ with its 2 targets _interval_ and _Controller_.
+[Create](https://github.com/q231950/interval/commit/d1abff1330e7a8c6edf0730d5ab13bfc09659042) _Package.swift_ which will have one target, the Kitura app. There is one product, _interval_ with its 2 targets _interval_ and _Controller_.
 
 The package specifies the following third party dependencies as a minimum requirement:
 
