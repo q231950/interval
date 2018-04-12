@@ -44,7 +44,7 @@ The package specifies the following third party dependencies as a minimum requir
 
 ## Setting up Sources/Tests
 
-[Add](c8860fd6e8d40a4b87a8c6eb7603f956d820b643) sources for `interval` and `Controller` and tests for `ControllerTests`.
+[Add](https://github.com/q231950/interval/commit/c8860fd6e8d40a4b87a8c6eb7603f956d820b643) sources for `interval` and `Controller` and tests for `ControllerTests`.
 
 ```bash
 .
@@ -65,7 +65,7 @@ The package specifies the following third party dependencies as a minimum requir
 └── interval_manifest.yml
 ```
 
-Once this is setup, it can be built for the first time. This will download the dependencies and compile the _interval_ app. Note that Kitura [requires](73ae4d07f08eaffefd327f591f220bb00ee98469) (at the time of writing) Swift 4.0.3, so Xcode 9.2.
+Once this is setup, it can be built for the first time. This will download the dependencies and compile the _interval_ app. Note that Kitura [requires](https://github.com/q231950/interval/commit/73ae4d07f08eaffefd327f591f220bb00ee98469) (at the time of writing) Swift 4.0.3, so Xcode 9.2.
 
 **Build the app:**
 
@@ -85,7 +85,7 @@ The app is now running on _localhost:8080_. Exit with Ctrl-C.
 
 ## Deploy the build
 
-At first, I removed the Swift Package Manager's `.build` folder. _.files_ and _.directories_ are not ignored by the `bx app push` command by default, so removing them will save you a considerable amount of time during the upload. You can ignore a directory or folder with a `.cfignore` file in the root of the repository.
+At first, I removed the Swift Package Manager's `.build` folder. _.files_ and _.directories_ are not ignored by the `bx app push` command by default, so removing them will save you a considerable amount of time during the upload. You can ignore a directory or folder with a [`.cfignore` file](https://github.com/q231950/interval/blob/master/.cfignore) in the root of the repository.
 
 **Upload the app**
 
