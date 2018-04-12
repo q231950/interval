@@ -107,4 +107,15 @@ More info can be retrieved with `bx cf logs interval --recent`, which is not ver
    2018-04-11T22:32:59.93+0200 [STG/0] OUT -----> Unpacking clang-4.0.0.tar.xz
 ```
 
-Looking into the Cloud Foundry App itself in the IBM Cloud reveals that somewhere is a `error:MissingLinuxMain`.
+Looking into the Cloud Foundry App itself in the IBM Cloud reveals that somewhere is a `error:MissingLinuxMain`. This error led me to [this stack overflow answer](https://stackoverflow.com/a/46693484) by Ole Begemann. Since I had a _LinuxMain.swift_ it took me a while until I figured out that it was in the _ControllerTests_ directory, not the root of the _Tests_ directory 🤦🏻‍♂️
+
+Once that was fixed, the app was pushed to IBM by `bx app push interval -f interval_manifest.yml` and the app was available at the route stated in the routes section of the manifest.
+
+```yaml
+routes:
+  - route: interval.eu-de.mybluemix.net
+```
+
+## Celebrate
+
+Finally, you have a Kitura app running in the IBM Cloud 🎉
