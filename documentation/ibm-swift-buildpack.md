@@ -48,14 +48,18 @@ The package specifies the following third party dependencies as a minimum requir
 
 ```bash
 .
+├── Package.resolved
 ├── Package.swift
 ├── Readme.md
 ├── Sources
 │   ├── Controller
+│   │   └── Controller.swift
 │   └── interval
+│       └── main.swift
 ├── Tests
-│   └── ControllerTests
-│       └── LinuxMain.swift
+│   ├── ControllerTests
+│   │   └── ControllerTests.swift
+│   └── LinuxMain.swift
 ├── documentation
 │   └── ibm-swift-buildpack.md
 └── interval_manifest.yml
@@ -78,3 +82,29 @@ macbook:interval kim$ ./.build/x86_64-apple-macosx10.10/debug/interval
 ```
 
 The app is now running on _localhost:8080_. Exit with Ctrl-C.
+
+## Deploy the build
+
+At first, I removed the Swift Package Manager's `.build` folder. _.files_ and _.directories_ are not ignored by the `bx app push` command by default, so removing them will save you a considerable amount of time during the upload. You can ignore a directory or folder with a `.cfignore` file in the root of the repository.
+
+**Upload the app**
+
+`bx app push -f interval_manifest.yml`
+
+Then there comes an interesting error log:
+
+`Error restarting application: StagingTimeExpired`
+
+More info can be retrieved with `bx cf logs interval --recent`, which is not very informative:
+
+```bash
+...
+   2018-04-11T22:32:48.49+0200 [STG/0] OUT -----> Getting swift-4.0.3
+   2018-04-11T22:32:49.90+0200 [STG/0] OUT        Cached swift-4.0.3
+   2018-04-11T22:32:49.91+0200 [STG/0] OUT -----> Unpacking swift-4.0.3.tar.gz
+   2018-04-11T22:32:56.65+0200 [STG/0] OUT -----> Getting clang-4.0.0
+   2018-04-11T22:32:59.93+0200 [STG/0] OUT        Cached clang-4.0.0
+   2018-04-11T22:32:59.93+0200 [STG/0] OUT -----> Unpacking clang-4.0.0.tar.xz
+```
+
+Looking into the Cloud Foundry App itself in the IBM Cloud reveals that somewhere is a `error:MissingLinuxMain`.
